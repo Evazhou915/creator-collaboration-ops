@@ -1,0 +1,55 @@
+{
+  "project_name": "Example Creator Campaign",
+  "owner": "",
+  "timezone": "Asia/Shanghai",
+  "brand_or_product": "",
+  "project_brief_path": "",
+  "budget": {
+    "amount": null,
+    "currency": "USD"
+  },
+  "target_platforms": ["TikTok", "Instagram"],
+  "campaign_window": {
+    "start": null,
+    "end": null
+  },
+  "outreach": {
+    "first_email_template_path": "",
+    "first_email_subject_template": "Collaboration opportunity with {{brand_or_product}}",
+    "rate_inquiry_template_path": "",
+    "negotiation_template_path": "",
+    "collaboration_confirmation_template_path": "",
+    "registration_template_path": "",
+    "script_timeline_template_path": "",
+    "review_feedback_template_path": "",
+    "payment_details_template_path": "",
+    "brief_attachment_path": ""
+  },
+  "contract": {
+    "attach_to_collaboration_confirmation": false,
+    "template_path": ""
+  },
+  "billing": {
+    "legal_name": "YOUR LEGAL ENTITY NAME",
+    "registered_office_address": "YOUR REGISTERED OFFICE ADDRESS",
+    "payment_request_cc": []
+  },
+  "automation": {
+    "inbox_scan_time": "10:30",
+    "auto_send_rate_inquiry": false,
+    "auto_send_script_timeline_after_recharge": false,
+    "first_outreach_requires_batch_approval": true,
+    "negotiation_requires_per_creator_approval": true,
+    "collaboration_confirmation_requires_approval": true,
+    "registration_message_requires_approval": true,
+    "content_feedback_requires_approval": true,
+    "payment_details_request_requires_approval": true,
+    "payment_request_requires_approval": true
+  },
+  "delivery_defaults": {
+    "script_revision_rounds": 2,
+    "video_revision_rounds": 2,
+    "review_sla_hours": 48,
+    "first_video_draft_after_script_approval_days": 5
+  }
+}

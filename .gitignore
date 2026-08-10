@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.env
+.env.*
+feishu-project-manifest.json
+gmail-scan-state.json
+gmail-scan-report.json
+*-import-report.json
+reports/
+secrets/
+data/

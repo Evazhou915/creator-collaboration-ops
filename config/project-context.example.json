@@ -1,0 +1,39 @@
+{
+  "brand_voice": {
+    "tone": "clear, warm, and professional",
+    "preferred_language": "en",
+    "avoid": [
+      "guaranteed performance claims",
+      "unapproved product promises",
+      "pressure about publication dates"
+    ]
+  },
+  "product_context": {
+    "one_sentence_description": "",
+    "approved_benefits": [],
+    "proof_points": [],
+    "required_disclosures": []
+  },
+  "commercial_rules": {
+    "default_currency": "USD",
+    "max_creator_rate": null,
+    "negotiation_rounds": 2,
+    "included_deliverables": [],
+    "usage_rights": "",
+    "exclusions": []
+  },
+  "approval_policy": {
+    "external_email_send": "human_approval",
+    "price_commitment": "human_approval",
+    "contract_confirmation": "human_approval",
+    "content_feedback": "human_approval",
+    "payment_request": "human_approval"
+  },
+  "delivery_policy": {
+    "script_required_before_video": true,
+    "script_free_revision_rounds": 2,
+    "video_free_revision_rounds": 2,
+    "review_sla_hours": 48,
+    "publication_deadline_mode": "optional_project_window_only"
+  }
+}
