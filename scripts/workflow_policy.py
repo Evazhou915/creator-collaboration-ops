@@ -101,11 +101,12 @@ def can_enter_payment_collection(
     content_status: str,
     agreed_platforms: Iterable[str],
     publication_links: dict[str, str],
+    published_status: str = "已发布",
 ) -> tuple[bool, str]:
     """Require published status and one valid URL for every agreed platform."""
 
     platforms = [platform.strip() for platform in agreed_platforms if platform.strip()]
-    if content_status != "已发布":
+    if content_status != published_status:
         return False, "content_is_not_marked_published"
     if not platforms:
         return False, "agreed_platforms_are_missing"
@@ -145,10 +146,15 @@ def validate_invoice(
     return not errors, errors
 
 
-def video_intake_gate(*, script_status: str, submitted_asset_type: str) -> tuple[bool, str]:
+def video_intake_gate(
+    *,
+    script_status: str,
+    submitted_asset_type: str,
+    approved_status: str = "已通过",
+) -> tuple[bool, str]:
     """Prevent video review when the required script gate was skipped."""
 
-    if submitted_asset_type.lower() == "video" and script_status != "已通过":
+    if submitted_asset_type.lower() == "video" and script_status != approved_status:
         return False, "flow_exception_script_approval_required_before_video_review"
     return True, "asset_can_enter_current_review_stage"
 

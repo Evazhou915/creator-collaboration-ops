@@ -37,7 +37,7 @@ class PublicWorkflowTests(unittest.TestCase):
                 "record_id": "rec-ready",
                 "fields": {
                     "达人昵称": "Alice",
-                    "联系邮箱": "Alice@Example.com",
+                    "联系邮箱": "Alice@Example.test",
                     "平台": "TikTok",
                     "主页链接": {"link": "https://tiktok.com/@alice"},
                     "最新状态": "待触达",
@@ -48,7 +48,7 @@ class PublicWorkflowTests(unittest.TestCase):
                 "record_id": "rec-thread",
                 "fields": {
                     "达人昵称": "Bob",
-                    "联系邮箱": "bob@example.com",
+                    "联系邮箱": "bob@example.test",
                     "平台": "Instagram",
                     "主页链接": "https://instagram.com/bob",
                     "最新状态": "待触达",
@@ -59,14 +59,14 @@ class PublicWorkflowTests(unittest.TestCase):
         report = QUEUE.build_queue(
             records,
             project_name="Example Campaign",
-            brand_or_product="Cola",
+            brand_or_product="Example Product",
             subject_template="{{brand_or_product}} opportunity for {{creator_name}}",
             body_template="Hi {{creator_name}},\nWe would love to discuss {{brand_or_product}}.",
             attachment_path="/tmp/brief.pdf",
         )
         self.assertEqual(report["queue_count"], 1)
-        self.assertEqual(report["queue"][0]["to"], "alice@example.com")
-        self.assertEqual(report["queue"][0]["creator_email"], "alice@example.com")
+        self.assertEqual(report["queue"][0]["to"], "alice@example.test")
+        self.assertEqual(report["queue"][0]["creator_email"], "alice@example.test")
         self.assertEqual(report["queue"][0]["source_identity"]["creator_name"], "Alice")
         self.assertEqual(report["queue"][0]["approval_status"], "待确认")
         self.assertIn("existing_gmail_thread", report["skipped"][0]["reason"])
@@ -77,8 +77,8 @@ class PublicWorkflowTests(unittest.TestCase):
             "queue": [{
                 "record_id": "rec-1",
                 "creator_name": "Alice",
-                "to": "alice@example.com",
-                "subject": "Cola collaboration",
+                "to": "alice@example.test",
+                "subject": "Example Product collaboration",
                 "body": "Hi Alice,\n\nLet's work together.",
                 "approval_status": "待确认",
             }],
@@ -91,8 +91,8 @@ class PublicWorkflowTests(unittest.TestCase):
         items, errors = SENDER.approved_items(queue)
         self.assertEqual(errors, [])
         message = SENDER.build_message(items[0])
-        self.assertEqual(message["To"], "alice@example.com")
-        self.assertEqual(message["Subject"], "Cola collaboration")
+        self.assertEqual(message["To"], "alice@example.test")
+        self.assertEqual(message["Subject"], "Example Product collaboration")
         self.assertIn("Let's work together.", message.get_content())
 
     def test_record_result_validation_requires_real_sent_ids(self):
@@ -101,8 +101,8 @@ class PublicWorkflowTests(unittest.TestCase):
             "results": [{
                 "record_id": "rec-1",
                 "creator_name": "Alice",
-                "to": "alice@example.com",
-                "subject": "Cola collaboration",
+                "to": "alice@example.test",
+                "subject": "Example Product collaboration",
                 "body": "Hi Alice",
                 "status": "sent",
                 "sent_at": "2026-08-10T02:00:00+00:00",
@@ -118,8 +118,8 @@ class PublicWorkflowTests(unittest.TestCase):
         result = {
             "record_id": "rec-1",
             "creator_name": "Alice",
-            "to": "alice@example.com",
-            "subject": "Cola collaboration",
+            "to": "alice@example.test",
+            "subject": "Example Product collaboration",
             "body": "Hi Alice,\nLet's collaborate.",
             "attachment_path": "/tmp/brief.pdf",
             "status": "sent",
@@ -145,8 +145,8 @@ class PublicWorkflowTests(unittest.TestCase):
             {
                 "record_id": "rec-2",
                 "creator_name": "Preksha",
-                "creator_email": "preksha@example.com",
-                "to": "preksha@example.com",
+                "creator_email": "preksha@example.test",
+                "to": "preksha@example.test",
                 "subject": "Re: Collaboration",
                 "body": "Hi Preksha,\nPlease send the draft.",
                 "platform": "TikTok",
@@ -154,7 +154,7 @@ class PublicWorkflowTests(unittest.TestCase):
                 "source_identity": {
                     "record_id": "rec-2",
                     "creator_name": "Preksha",
-                    "creator_email": "preksha@example.com",
+                    "creator_email": "preksha@example.test",
                     "platform": "TikTok",
                     "profile_url": "https://tiktok.com/@alice",
                 },
@@ -162,7 +162,7 @@ class PublicWorkflowTests(unittest.TestCase):
             "rec-1",
             {
                 "达人昵称": "Alice",
-                "联系邮箱": "alice@example.com",
+                "联系邮箱": "alice@example.test",
             },
             ["Alice", "Preksha"],
         )
@@ -177,15 +177,15 @@ class PublicWorkflowTests(unittest.TestCase):
             "queue": [{
                 "record_id": "rec-1",
                 "creator_name": "Alice",
-                "creator_email": "alice@example.com",
-                "to": "nits@example.com",
-                "subject": "Cola collaboration",
+                "creator_email": "alice@example.test",
+                "to": "nits@example.test",
+                "subject": "Example Product collaboration",
                 "body": "Hi Preksha,\nLet's collaborate.",
                 "platform": "TikTok",
                 "profile_url": "https://tiktok.com/@alice",
                 "source_identity": {
                     "creator_name": "Alice",
-                    "creator_email": "alice@example.com",
+                    "creator_email": "alice@example.test",
                     "platform": "TikTok",
                     "profile_url": "https://tiktok.com/@alice",
                 },
@@ -205,8 +205,8 @@ class PublicWorkflowTests(unittest.TestCase):
             "queue": [{
                 "record_id": "rec-1",
                 "creator_name": "Alice",
-                "to": "alice@example.com",
-                "subject": "Cola collaboration",
+                "to": "alice@example.test",
+                "subject": "Example Product collaboration",
                 "body": "Hi Alice",
                 "thread_id": "thread-existing",
                 "approval_status": "已确认",
@@ -222,7 +222,7 @@ class PublicWorkflowTests(unittest.TestCase):
                 "record_id": "rec-1",
                 "fields": {
                     "达人昵称": "Alice",
-                    "联系邮箱": "alice@example.com",
+                    "联系邮箱": "alice@example.test",
                     "平台": "TikTok",
                     "主页链接": "https://tiktok.com/@alice",
                     "最新状态": "待触达",
@@ -239,7 +239,7 @@ class PublicWorkflowTests(unittest.TestCase):
 
     def test_creator_import_normalizes_and_deduplicates_handles(self):
         rows = [
-            (2, {"name": "Alice", "platform": "TikTok", "profile_url": "@alice", "followers": "1,200", "email": "alice@example.com"}),
+            (2, {"name": "Alice", "platform": "TikTok", "profile_url": "@alice", "followers": "1,200", "email": "alice@example.test"}),
             (3, {"name": "Alice duplicate", "platform": "TikTok", "profile_url": "https://www.tiktok.com/@alice/"}),
             (4, {"name": "Missing URL", "platform": "Instagram", "profile_url": ""}),
         ]
@@ -255,17 +255,17 @@ class PublicWorkflowTests(unittest.TestCase):
 
     def test_gmail_matching_prefers_thread_then_falls_back_to_email(self):
         thread_creator = SCANNER.CreatorRef(
-            "rec-1", "Alice", "alice@example.com", "thread-1", "", "https://tiktok.com/@alice", "TikTok", "已触达"
+            "rec-1", "Alice", "alice@example.test", "thread-1", "", "https://tiktok.com/@alice", "TikTok", "已触达"
         )
         email_creator = SCANNER.CreatorRef(
-            "rec-2", "Bob", "bob@example.com", "", "", "https://instagram.com/bob", "Instagram", "待触达"
+            "rec-2", "Bob", "bob@example.test", "", "", "https://instagram.com/bob", "Instagram", "待触达"
         )
 
         thread_message = SCANNER.GmailMessage(
-            "msg-1", "thread-1", 1, "Alice", "alice@example.com", "Re: Collaboration", "", "", "", "", "", ""
+            "msg-1", "thread-1", 1, "Alice", "alice@example.test", "Re: Collaboration", "", "", "", "", "", ""
         )
         email_message = SCANNER.GmailMessage(
-            "msg-2", "thread-2", 2, "Bob", "bob@example.com", "Re: Collaboration", "", "", "", "", "", ""
+            "msg-2", "thread-2", 2, "Bob", "bob@example.test", "Re: Collaboration", "", "", "", "", "", ""
         )
 
         self.assertEqual(
@@ -286,13 +286,13 @@ class PublicWorkflowTests(unittest.TestCase):
                 "internalDate": "1",
                 "payload": {
                     "mimeType": "text/plain",
-                    "headers": [{"name": "From", "value": "Alice <alice@example.com>"}],
+                    "headers": [{"name": "From", "value": "Alice <alice@example.test>"}],
                     "body": {"data": encoded},
                 },
             }
         )
         self.assertIn("Rate: $300", message.body)
-        self.assertEqual(message.sender_email, "alice@example.com")
+        self.assertEqual(message.sender_email, "alice@example.test")
 
     def test_reply_classification_and_quote_extraction(self):
         message = SCANNER.GmailMessage(
@@ -300,7 +300,7 @@ class PublicWorkflowTests(unittest.TestCase):
             "thread-quote",
             1,
             "Alice",
-            "alice@example.com",
+            "alice@example.test",
             "Re: Collaboration",
             "",
             "",
@@ -317,7 +317,7 @@ class PublicWorkflowTests(unittest.TestCase):
             "thread-interest",
             1,
             "Alice",
-            "alice@example.com",
+            "alice@example.test",
             "Re: Collaboration",
             "",
             "",
@@ -334,9 +334,9 @@ class PublicWorkflowTests(unittest.TestCase):
             "thread-1",
             1700000000000,
             "Alice",
-            "alice@example.com",
+            "alice@example.test",
             "Re: Collaboration",
-            "<msg@example.com>",
+            "<msg@example.test>",
             "",
             "",
             "",

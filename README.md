@@ -46,6 +46,16 @@ This repository is a generic workflow and reference implementation. It is not a 
 
    After reviewing the report, add `--apply` to create immutable Communication Log records and update uniquely matched Creator Master records. `--apply` never sends email; ambiguous or already-processed messages are not written.
 
+11. Use the local-only late-stage sandbox to exercise rate evaluation through payment evidence without contacting Gmail or Feishu:
+
+   ```bash
+   python3 scripts/run_late_stage_sandbox.py \
+     --fixture tests/fixtures/late_stage_sandbox.json \
+     --output /tmp/late-stage-sandbox-report.json
+   ```
+
+   The bundled fixture contains exactly six fictional creators and synthetic events. Every external message and internal payment request is emitted only as an `approval_status=pending` draft. See `references/new-project-minimum-checklist.md` before adapting the fixture in a private project workspace.
+
 See `SKILL.md`, `references/workflow-spec.md`, and `references/safety-model.md` for the complete workflow and approval gates.
 
 ## Contributing And Security
@@ -87,7 +97,7 @@ Classification that does not fit an existing Bitable option, ambiguous matches, 
 
 ## Tests
 
-The public tree includes synthetic tests that do not call Gmail or Feishu:
+The public tree includes synthetic tests that do not call Gmail or Feishu. The tests include a six-creator late-stage path covering negotiation drafts, collaboration confirmation, registration and manual recharge, script/video/caption review, cross-platform publication links, Invoice validation, internal payment-request drafts, and payment-evidence gating:
 
 ```bash
 python3 -m unittest discover -s tests -v

@@ -14,7 +14,7 @@ description: >
 
 Create one isolated project workflow at a time. Use the project's Feishu Bitable as the sole operational record; do not split current data across old spreadsheets, inbox labels, and personal notes.
 
-Read [workflow-spec.md](references/workflow-spec.md) and [safety-model.md](references/safety-model.md) before creating a project, changing its schema, processing creator mail, or progressing a creator to a new stage. Read the private project context before drafting claims, commercial terms, or external messages.
+Read [workflow-spec.md](references/workflow-spec.md) and [safety-model.md](references/safety-model.md) before creating a project, changing its schema, processing creator mail, or progressing a creator to a new stage. Read the private project context before drafting claims, commercial terms, or external messages. For the shortest setup path, use [new-project-minimum-checklist.md](references/new-project-minimum-checklist.md).
 
 ## Start A Project
 
@@ -98,6 +98,18 @@ The first run requires `--since`; later runs use the local cursor beside the man
 4. Send that email only after owner approval. Validate the returned Invoice before preparing an internal payment request.
 5. Draft internal payment requests in the project's configured language, including recipient, configured CCs, amount, payee/payment method, body, attachments, and relevant links. Never use a public default for legal or payment details.
 6. Send payment requests only after owner approval. Mark actual payment complete only after a teammate records payment evidence; a sent request is not a payment.
+
+## Local Late-Stage Sandbox
+
+Use `scripts/run_late_stage_sandbox.py` to exercise the workflow from a received quote through payment evidence using local JSON only. The bundled `tests/fixtures/late_stage_sandbox.json` contains six fictional creators and covers both a complete lifecycle and blocked branches. The executor does not import provider clients, does not read or write Gmail or Feishu, and reports `external_calls_made=[]`.
+
+The sandbox evaluates rates, prepares negotiation and collaboration-confirmation drafts, gates registration and manual recharge evidence, tracks script/video/caption reviews, verifies publication links for every agreed platform, validates Invoice fields and duplicates, prepares an internal payment-request draft, and requires payment evidence before completion. Every outbound item has `delivery_mode=draft_only` and `approval_status=pending`; another authorized workflow must separately review and send it.
+
+```bash
+python3 scripts/run_late_stage_sandbox.py \
+  --fixture tests/fixtures/late_stage_sandbox.json \
+  --output /tmp/late-stage-sandbox-report.json
+```
 
 ## Safety Gates
 

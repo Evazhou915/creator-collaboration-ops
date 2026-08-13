@@ -1,0 +1,168 @@
+{
+  "project": {
+    "project_name": "Synthetic Launch Lab",
+    "commercial_rules": {
+      "currency": "USD",
+      "max_creator_rate": 500
+    },
+    "delivery_policy": {
+      "script_free_revision_rounds": 2,
+      "video_free_revision_rounds": 2
+    },
+    "billing": {
+      "legal_name": "Example Campaign Studio LLC",
+      "registered_office_address": "100 Fiction Avenue, Sample City",
+      "payment_request_recipient": "finance-review@example.test",
+      "payment_request_cc": ["campaign-owner@example.test"]
+    }
+  },
+  "previously_seen_invoice_numbers": [],
+  "creators": [
+    {
+      "creator_id": "syn-001",
+      "name": "Avery North",
+      "email": "avery.north@example.test",
+      "platform": "TikTok",
+      "profile_url": "https://www.tiktok.com/@averynorth.synthetic",
+      "deliverable": {
+        "description": "one short-form product walkthrough cross-posted to TikTok and Instagram",
+        "platforms": ["TikTok", "Instagram"]
+      },
+      "events": [
+        {"event_id": "evt-001-01", "type": "quote_received", "amount": 620, "currency": "USD"},
+        {"event_id": "evt-001-02", "type": "negotiation_requested", "target_amount": 500, "currency": "USD"},
+        {"event_id": "evt-001-03", "type": "negotiation_accepted", "amount": 500, "currency": "USD"},
+        {"event_id": "evt-001-04", "type": "collaboration_confirmed"},
+        {"event_id": "evt-001-05", "type": "registration_confirmed", "registration_email": "avery.account@example.test"},
+        {"event_id": "evt-001-06", "type": "recharge_completed", "evidence": "local://evidence/recharge-syn-001"},
+        {"event_id": "evt-001-07", "type": "script_submitted"},
+        {"event_id": "evt-001-08", "type": "script_reviewed", "decision": "approved", "feedback": "The synthetic script is approved."},
+        {"event_id": "evt-001-09", "type": "video_submitted"},
+        {"event_id": "evt-001-10", "type": "video_reviewed", "decision": "approved", "feedback": "The synthetic video is approved."},
+        {"event_id": "evt-001-11", "type": "caption_submitted"},
+        {"event_id": "evt-001-12", "type": "caption_reviewed", "decision": "approved", "feedback": "The synthetic caption is approved."},
+        {"event_id": "evt-001-13", "type": "published", "links": {"TikTok": "https://example.test/publications/syn-001-tiktok", "Instagram": "https://example.test/publications/syn-001-instagram"}},
+        {"event_id": "evt-001-14", "type": "invoice_received", "payment_method": "bank_transfer", "payment_account": "SYNTHETIC-ACCOUNT-001", "attachment": "local://invoice/syn-001.pdf", "invoice": {"number": "SYN-INV-001", "legal_name": "Example Campaign Studio LLC", "address": "100 Fiction Avenue, Sample City", "currency": "USD", "amount": 500, "payee": "Avery North", "attachment_readable": true}},
+        {"event_id": "evt-001-15", "type": "prepare_payment_request"},
+        {"event_id": "evt-001-16", "type": "payment_request_approved"},
+        {"event_id": "evt-001-17", "type": "payment_request_submitted"},
+        {"event_id": "evt-001-18", "type": "payment_evidence_recorded", "evidence": {"reference": "local://evidence/payment-syn-001", "recorded_by": "synthetic-finance-reviewer", "recorded_at": "2026-08-12T16:30:00Z"}}
+      ]
+    },
+    {
+      "creator_id": "syn-002",
+      "name": "Mina Vale",
+      "email": "mina.vale@example.test",
+      "platform": "Instagram",
+      "profile_url": "https://www.instagram.com/minavale.synthetic",
+      "deliverable": {
+        "description": "one tutorial cross-posted to Instagram and YouTube",
+        "platforms": ["Instagram", "YouTube"]
+      },
+      "events": [
+        {"event_id": "evt-002-01", "type": "quote_received", "amount": 400, "currency": "USD"},
+        {"event_id": "evt-002-02", "type": "negotiation_accepted", "amount": 400, "currency": "USD"},
+        {"event_id": "evt-002-03", "type": "collaboration_confirmed"},
+        {"event_id": "evt-002-04", "type": "registration_confirmed", "registration_email": "mina.account@example.test"},
+        {"event_id": "evt-002-05", "type": "recharge_completed", "evidence": "local://evidence/recharge-syn-002"},
+        {"event_id": "evt-002-06", "type": "script_submitted"},
+        {"event_id": "evt-002-07", "type": "script_reviewed", "decision": "approved", "feedback": "Approved."},
+        {"event_id": "evt-002-08", "type": "video_submitted"},
+        {"event_id": "evt-002-09", "type": "video_reviewed", "decision": "approved", "feedback": "Approved."},
+        {"event_id": "evt-002-10", "type": "caption_submitted"},
+        {"event_id": "evt-002-11", "type": "caption_reviewed", "decision": "approved", "feedback": "Approved."},
+        {"event_id": "evt-002-12", "type": "published", "links": {"Instagram": "https://example.test/publications/syn-002-instagram"}},
+        {"event_id": "evt-002-13", "type": "invoice_received", "payment_method": "paypal", "payment_account": "mina.payments@example.test", "attachment": "local://invoice/syn-002.pdf", "invoice": {"number": "SYN-INV-002", "legal_name": "Example Campaign Studio LLC", "address": "100 Fiction Avenue, Sample City", "currency": "USD", "amount": 400, "payee": "Mina Vale", "attachment_readable": true}}
+      ]
+    },
+    {
+      "creator_id": "syn-003",
+      "name": "Theo Quill",
+      "email": "theo.quill@example.test",
+      "platform": "YouTube",
+      "profile_url": "https://www.youtube.com/@theoquill-synthetic",
+      "deliverable": {
+        "description": "one YouTube integration",
+        "platforms": ["YouTube"]
+      },
+      "events": [
+        {"event_id": "evt-003-01", "type": "quote_received", "amount": 450, "currency": "USD"},
+        {"event_id": "evt-003-02", "type": "negotiation_accepted", "amount": 450, "currency": "USD"},
+        {"event_id": "evt-003-03", "type": "collaboration_confirmed"},
+        {"event_id": "evt-003-04", "type": "registration_confirmed", "registration_email": "theo.account@example.test"},
+        {"event_id": "evt-003-05", "type": "recharge_completed", "evidence": "local://evidence/recharge-syn-003"},
+        {"event_id": "evt-003-06", "type": "script_submitted"},
+        {"event_id": "evt-003-07", "type": "script_reviewed", "decision": "approved", "feedback": "Approved."},
+        {"event_id": "evt-003-08", "type": "video_submitted"},
+        {"event_id": "evt-003-09", "type": "video_reviewed", "decision": "approved", "feedback": "Approved."},
+        {"event_id": "evt-003-10", "type": "caption_submitted"},
+        {"event_id": "evt-003-11", "type": "caption_reviewed", "decision": "approved", "feedback": "Approved."},
+        {"event_id": "evt-003-12", "type": "published", "links": {"YouTube": "https://example.test/publications/syn-003-youtube"}},
+        {"event_id": "evt-003-13", "type": "invoice_received", "payment_method": "wise", "payment_account": "SYNTHETIC-ACCOUNT-003", "attachment": "local://invoice/syn-003.pdf", "invoice": {"number": "SYN-INV-001", "legal_name": "Example Campaign Studio LLC", "address": "Wrong Synthetic Address", "currency": "USD", "amount": 440, "payee": "Theo Quill", "attachment_readable": true}},
+        {"event_id": "evt-003-14", "type": "prepare_payment_request"}
+      ]
+    },
+    {
+      "creator_id": "syn-004",
+      "name": "Juniper Reed",
+      "email": "juniper.reed@example.test",
+      "platform": "TikTok",
+      "profile_url": "https://www.tiktok.com/@juniperreed.synthetic",
+      "deliverable": {
+        "description": "one TikTok demonstration",
+        "platforms": ["TikTok"]
+      },
+      "events": [
+        {"event_id": "evt-004-01", "type": "quote_received", "amount": 350, "currency": "USD"},
+        {"event_id": "evt-004-02", "type": "negotiation_accepted", "amount": 350, "currency": "USD"},
+        {"event_id": "evt-004-03", "type": "collaboration_confirmed"},
+        {"event_id": "evt-004-04", "type": "registration_confirmed", "registration_email": "juniper.account@example.test"},
+        {"event_id": "evt-004-05", "type": "recharge_completed", "evidence": "local://evidence/recharge-syn-004"},
+        {"event_id": "evt-004-06", "type": "video_submitted"}
+      ]
+    },
+    {
+      "creator_id": "syn-005",
+      "name": "Sol Ember",
+      "email": "sol.ember@example.test",
+      "platform": "Instagram",
+      "profile_url": "https://www.instagram.com/solember.synthetic",
+      "deliverable": {
+        "description": "one Instagram Reel",
+        "platforms": ["Instagram"]
+      },
+      "events": [
+        {"event_id": "evt-005-01", "type": "quote_received", "amount": 300, "currency": "USD"},
+        {"event_id": "evt-005-02", "type": "negotiation_accepted", "amount": 300, "currency": "USD"},
+        {"event_id": "evt-005-03", "type": "collaboration_confirmed"},
+        {"event_id": "evt-005-04", "type": "registration_confirmed", "registration_email": "sol.account@example.test"},
+        {"event_id": "evt-005-05", "type": "recharge_completed", "evidence": ""},
+        {"event_id": "evt-005-06", "type": "script_submitted"}
+      ]
+    },
+    {
+      "creator_id": "syn-006",
+      "name": "Lena Prism",
+      "email": "lena.prism@example.test",
+      "platform": "TikTok",
+      "profile_url": "https://www.tiktok.com/@lenaprism.synthetic",
+      "deliverable": {
+        "description": "one TikTok explainer",
+        "platforms": ["TikTok"]
+      },
+      "events": [
+        {"event_id": "evt-006-01", "type": "quote_received", "amount": 280, "currency": "USD"},
+        {"event_id": "evt-006-02", "type": "negotiation_accepted", "amount": 280, "currency": "USD"},
+        {"event_id": "evt-006-03", "type": "collaboration_confirmed"},
+        {"event_id": "evt-006-04", "type": "registration_confirmed", "registration_email": "lena.account@example.test"},
+        {"event_id": "evt-006-05", "type": "recharge_completed", "evidence": "local://evidence/recharge-syn-006"},
+        {"event_id": "evt-006-06", "type": "script_submitted"},
+        {"event_id": "evt-006-07", "type": "script_reviewed", "decision": "revision_requested", "feedback": "Revision one."},
+        {"event_id": "evt-006-08", "type": "script_submitted"},
+        {"event_id": "evt-006-09", "type": "script_reviewed", "decision": "revision_requested", "feedback": "Revision two."},
+        {"event_id": "evt-006-10", "type": "script_submitted"},
+        {"event_id": "evt-006-11", "type": "script_reviewed", "decision": "revision_requested", "feedback": "Revision three."}
+      ]
+    }
+  ]
+}
